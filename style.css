@@ -1,0 +1,212 @@
+/* Jonas Tallberg — personal site
+   Dark blue and white. System fonts only: nothing is loaded from other servers. */
+
+:root {
+  --blue: #002f5f;          /* Stockholm University dark blue */
+  --blue-hover: #0b4a8c;
+  --ink: #1d232b;
+  --muted: #566272;
+  --rule: #d6dce4;
+  --soft: #f2f5f9;
+  --white: #ffffff;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a { color: var(--blue); text-underline-offset: 0.15em; }
+a:hover { color: var(--blue-hover); }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid #f2b705;
+  outline-offset: 2px;
+}
+
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: var(--white); color: var(--blue); padding: 0.5rem 0.75rem; z-index: 10;
+}
+.skip:focus { left: 0; }
+
+/* ---------- Header and navigation ---------- */
+
+.site-header { background: var(--blue); color: var(--white); }
+.site-header .bar {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+.site-name {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+a.site-name:hover { color: var(--white); text-decoration: underline; }
+
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.site-nav a {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  color: var(--white);
+  text-decoration: none;
+}
+.site-nav a:hover { background: rgba(255, 255, 255, 0.16); color: var(--white); }
+.site-nav a[aria-current="page"] { background: var(--white); color: var(--blue); border-color: var(--white); font-weight: 600; }
+.site-nav a:focus-visible { outline-color: #f2b705; }
+
+/* ---------- Page body ---------- */
+
+main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3.5rem;
+}
+.measure { max-width: 40rem; }
+
+h1, h2, h3 { font-family: var(--serif); color: var(--blue); line-height: 1.25; font-weight: 600; }
+h1 { font-size: 2rem; margin: 0 0 0.35rem; }
+h2 { font-size: 1.4rem; margin: 2.75rem 0 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+h2:first-of-type { margin-top: 2rem; }
+h3 { font-size: 1.1rem; margin: 1.75rem 0 0.5rem; }
+p { margin: 0 0 1rem; }
+.lede { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+.muted { color: var(--muted); }
+.small { font-size: 0.92rem; }
+
+/* ---------- About page ---------- */
+
+.intro { display: flex; gap: 2.25rem; align-items: flex-start; }
+.intro .portrait { flex: 0 0 13rem; }
+.intro .portrait img { display: block; width: 100%; height: auto; border-radius: 2px; background: var(--soft); }
+.intro .text { flex: 1 1 auto; min-width: 0; }
+.intro .text p:last-child { margin-bottom: 0; }
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 3px;
+  text-decoration: none;
+}
+.button:hover { background: var(--blue-hover); border-color: var(--blue-hover); color: var(--white); }
+
+/* ---------- Lists ---------- */
+
+ul.plain, ol.plain { list-style: none; margin: 0; padding: 0; }
+ul.plain > li { margin: 0 0 0.6rem; }
+dl.facts { margin: 0; display: grid; grid-template-columns: 11rem 1fr; gap: 0.35rem 1.25rem; }
+dl.facts dt { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); padding-top: 0.15rem; }
+dl.facts dd { margin: 0; }
+
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { margin: 0 0 0.8rem; padding-left: 1.25rem; text-indent: -1.25rem; }
+.pubs .w { color: var(--muted); }
+.pubs a.doi {
+  font-family: var(--sans); font-size: 0.8rem; margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem; border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; white-space: nowrap;
+}
+.pubs a.doi:hover { background: var(--soft); }
+.jump { font-family: var(--sans); font-size: 0.92rem; line-height: 2; }
+.jump a { margin-right: 1rem; white-space: nowrap; }
+
+.years { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); white-space: nowrap; }
+ul.timeline > li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0 1.25rem; margin: 0 0 0.6rem; }
+
+/* ---------- Footer ---------- */
+
+.site-footer { border-top: 1px solid var(--rule); }
+.site-footer .inner {
+  max-width: 52rem; margin: 0 auto; padding: 1.25rem 1.25rem 2rem;
+  font-family: var(--sans); font-size: 0.85rem; color: var(--muted);
+}
+
+/* ---------- Survey information page ---------- */
+
+.info-page main { max-width: 44rem; }
+.info-page h2 { margin-top: 2.25rem; }
+.info-page .approved { font-size: 1.0625rem; }
+.missing {
+  margin: 0.25rem 0 1rem;
+  padding: 0.9rem 1rem;
+  background: #fff6d6;
+  border: 2px dashed #b38600;
+  color: #4a3a00;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+.draft-notice {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.1rem;
+  background: #fff6d6;
+  border: 2px solid #b38600;
+  color: #4a3a00;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+.draft-notice strong { display: block; margin-bottom: 0.25rem; }
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 40rem) {
+  body { font-size: 1rem; }
+  main { padding: 1.75rem 1rem 2.5rem; }
+  .site-header .bar { padding: 0.85rem 1rem; }
+  .site-nav ul { gap: 0.3rem; }
+  .site-nav a { padding: 0.7rem 0.55rem; font-size: 0.88rem; }
+  h1 { font-size: 1.65rem; }
+  .intro { flex-direction: column; gap: 1.25rem; }
+  .intro .portrait { flex-basis: auto; width: 10.5rem; }
+  dl.facts { grid-template-columns: 1fr; gap: 0; }
+  dl.facts dt { padding-top: 0.6rem; }
+  ul.timeline > li { grid-template-columns: 1fr; }
+  .years { margin-bottom: 0.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ---------- Print (used when saving a page as PDF) ---------- */
+
+@media print {
+  :root { --blue: #000; }
+  body { font-size: 11pt; line-height: 1.5; color: #000; }
+  .site-header .site-nav, .skip, .site-footer, .button { display: none !important; }
+  .site-header { background: none; color: #000; border-bottom: 1px solid #000; }
+  .site-header .bar { padding: 0 0 0.4rem; max-width: none; }
+  .site-name { color: #000; font-size: 11pt; }
+  main { max-width: none; padding: 1rem 0 0; }
+  h1, h2, h3 { color: #000; break-after: avoid; }
+  h2 { border-top: 1px solid #999; }
+  section, li { break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  .missing, .draft-notice { border-color: #000; background: none; color: #000; }
+}
